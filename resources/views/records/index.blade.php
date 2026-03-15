@@ -40,7 +40,21 @@
                             <div class="dropdown d-flex justify-content-end mt-5">
                                 <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">Options</button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{  route('records.edit', $record -> id) }}">Edit</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{  route('records.edit', $record -> id) }}">
+                                            Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <form action="{{ route('records.destroy', $record -> id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            
+                                            <button type="submit" class="dropdown-item">
+                                                Remove
+                                            </button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

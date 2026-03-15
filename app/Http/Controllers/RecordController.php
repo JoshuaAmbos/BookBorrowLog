@@ -69,8 +69,9 @@ class RecordController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Record $record)
     {
-        //
+        $record -> delete();
+        return redirect()->route('records.index', $record -> id)->with('success','Record removed');
     }
 }
