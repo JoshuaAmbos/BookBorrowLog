@@ -45,9 +45,9 @@ class RecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Record $record)
     {
-        //
+        return view('records.edit', compact('record'));
     }
 
     /**

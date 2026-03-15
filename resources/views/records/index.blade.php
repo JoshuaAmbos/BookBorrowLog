@@ -24,17 +24,31 @@
 
             <!-- display records -->
             @forelse ($records as $record)
-                <div class="col-2 g-3">
+                <div class="col-4 g-3">
                     <div class="card">
                         <div class="card-body">
-                            <h2 class="card-title mb-1">{{ $record -> borrowerName }}</h2>
-                            <h4 class="card-subtitle text-muted">{{ $record -> bookTitle }}</h4>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2 class="card-title mb-1 fw-semibold">{{ $record -> bookTitle }}</h2>
+                                <span class="badge {{ $record->status == 'Borrowed' ? 'bg-warning' : 'bg-success' }} p-2 fs-6">
+                                    {{ $record->status }}
+                                    </span>
+                            </div>
+                    
+                            <h5 class="card-subtitle" style="color: gray">Borrowed by: {{ $record -> borrowerName }}</h5>
+                            
+                            <div class="dropdown d-flex justify-content-end mt-5">
+                                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">Options</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{  route('records.edit', $record -> id) }}">Edit</a></li>
+                                </ul>
+                            </div>
+
+                            
+
                         </div>
-                        <p class="d-flex justify-content-end mx-2">
-                            <span class="badge {{ $record->status == 'Borrowed' ? 'bg-warning' : 'bg-success' }} p-2 fs-7">
-                                {{ $record->status }}
-                            </span>
-                        </p>
+                        
+                        
                             
                     </div>
                 </div>
@@ -47,6 +61,6 @@
         
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
