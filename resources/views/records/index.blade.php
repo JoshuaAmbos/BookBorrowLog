@@ -43,13 +43,7 @@
                                     <li><a class="dropdown-item" href="{{  route('records.edit', $record -> id) }}">Edit</a></li>
                                 </ul>
                             </div>
-
-                            
-
                         </div>
-                        
-                        
-                            
                     </div>
                 </div>
             @empty

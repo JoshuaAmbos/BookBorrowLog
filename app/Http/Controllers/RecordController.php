@@ -46,16 +46,24 @@ class RecordController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Record $record)
-    {
+    {   
+        $record = Record::find($record->id);
         return view('records.edit', compact('record'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Record $record)
     {
-        //
+        $request -> validate([
+            'borrowerName' => 'required',
+            'bookTitle' => 'required',
+            'status' => 'required',
+        ]);
+
+        $record -> update($request->all());
+        return redirect()->route('records.index')->with('success','Record updated');
     }
 
     /**
