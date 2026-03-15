@@ -30,15 +30,14 @@
             
             <hr>
 
-
             <!-- display records -->
             @forelse ($records as $record)
                 <div class="col-4 g-3">
-                    <div class="card">
+                    <div class="card position-relative" style="min-height: 200px">
                         <div class="card-body">
                             
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h2 class="card-title mb-1 fw-semibold">{{ $record -> bookTitle }}</h2>
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h2 class="card-title mb-1 fw-semibold" style="max-width: 60%">{{ $record -> bookTitle }}</h2>
                                 <span class="badge {{ $record->status == 'Borrowed' ? 'bg-warning' : 'bg-success' }} p-2 fs-6">
                                     {{ $record->status }}
                                     </span>
@@ -46,7 +45,7 @@
                     
                             <h5 class="card-subtitle" style="color: gray">Borrowed by: {{ $record -> borrowerName }}</h5>
                             
-                            <div class="dropdown d-flex justify-content-end mt-5">
+                            <div class="dropdown position-absolute bottom-0 end-0 mt-3 me-3 mb-3">
                                 <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">Actions</button>
                                 <ul class="dropdown-menu">
                                     <li>
