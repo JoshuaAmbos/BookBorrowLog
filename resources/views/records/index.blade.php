@@ -20,7 +20,16 @@
                 Records
             </h1>
             <p class="text-secondary">Manage records of borrowed books</p>
+
+            <!-- add btn -->
+            <div class="col-2">
+                <a href="{{ route('records.create') }}">
+                    <button class="btn btn-outline-dark mb-3">Add Record</button>
+                </a>
+            </div>
+            
             <hr>
+
 
             <!-- display records -->
             @forelse ($records as $record)
@@ -38,7 +47,7 @@
                             <h5 class="card-subtitle" style="color: gray">Borrowed by: {{ $record -> borrowerName }}</h5>
                             
                             <div class="dropdown d-flex justify-content-end mt-5">
-                                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">Options</button>
+                                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">Actions</button>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a class="dropdown-item" href="{{  route('records.edit', $record -> id) }}">
@@ -61,7 +70,7 @@
                     </div>
                 </div>
             @empty
-                <p>No records found.</p>
+                <p>No record found.</p>
             @endforelse
         </div>
        

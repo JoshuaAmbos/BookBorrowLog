@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('borrowerName');
             $table->string('bookTitle');
-            $table->enum('status', ['Borrowed', 'Returned']);
+            $table->enum('status', ['Borrowed', 'Returned'])->default('Borrowed');
             $table->timestamps();
         });
     }

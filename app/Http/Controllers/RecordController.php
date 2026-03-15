@@ -31,7 +31,13 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'borrowerName'=>'required',
+            'bookTitle'=>'required',
+        ]);
+
+        Record::create($request->all());
+        return redirect()->route('records.index')->with('success','Record added');
     }
 
     /**
